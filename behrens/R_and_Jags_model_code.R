@@ -27,7 +27,7 @@ mod = 'model
 inits<-NULL
 
 # what parameters we want to track
-params = c("R", "K", "V", "reward")
+params = c("R", "K", "V")
 
 ## hyperparameters
 # number of iterations
@@ -53,7 +53,7 @@ post = coda.samples(jmod, params, n.iter = 1000, thin = nt)
 gelman.diag(post, multivariate = F)
 
 # diagnostic evaluation of posterior samples
-MCMCtrace(post, params = c("V"), pdf=F)
+MCMCtrace(post, params = c("R", "K", "V"), pdf=F)
 
 
 # get posterior means for plot
