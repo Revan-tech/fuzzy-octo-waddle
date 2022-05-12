@@ -61,10 +61,10 @@ posterior_means_V = MCMCsummary(post, params = c("V"), digits=2)$mean
 posterior_means_R = MCMCsummary(post, params = c("R"), digits=2)$mean
 
 
-data_to_plot = data.frame(V = posterior_means_V,R =posterior_means_R, probability = unlist(map2(meta$probs, meta$n, function(probs,n){rep(probs, n)})))
+data_for_plot = data.frame(V = posterior_means_V,R =posterior_means_R, probability = unlist(map2(meta$probs, meta$n, function(probs,n){rep(probs, n)})))
 
 # plot estimated probability and real probability
-ggplot(data=data_to_plot, mapping = aes(x = 1:nrow(data_to_plot))) + geom_line(mapping = aes(y = R, colour="Estimated probability")) +
+ggplot(data=data_for_plot, mapping = aes(x = 1:nrow(data_to_plot))) + geom_line(mapping = aes(y = R, colour="Estimated probability")) +
   geom_line(mapping = aes(y = probability, colour="Real probability")) +
   scale_color_manual(name = "", values = c("Estimated probability" = "darkblue", "Real probability" = "red")) +
   theme(legend.position = "bottom") +
@@ -72,7 +72,7 @@ ggplot(data=data_to_plot, mapping = aes(x = 1:nrow(data_to_plot))) + geom_line(m
   ylab("Probability")
 
 # plot estimated volatility
-ggplot(data=data_to_plot, mapping = aes(x = 1:nrow(data_to_plot))) + geom_line(mapping = aes(y = V,colour="Volatility")) +  scale_color_manual(name = "", values = c("Volatility" = "darkgreen")) +
+ggplot(data=data_for_plot, mapping = aes(x = 1:nrow(data_to_plot))) + geom_line(mapping = aes(y = V,colour="Volatility")) +  scale_color_manual(name = "", values = c("Volatility" = "darkgreen")) +
   theme(legend.position = "bottom") +
   xlab("Trial") + 
   ylab("Volatility")
