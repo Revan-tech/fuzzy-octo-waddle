@@ -29,9 +29,6 @@ inits<-NULL
 # what parameters we want to track
 params = c("R", "K", "V")
 
-## hyperparameters
-# number of iterations
-ni = 1000
 # burn in interval
 nb = 30000
 # thinning interval
