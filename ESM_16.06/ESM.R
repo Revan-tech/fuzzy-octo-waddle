@@ -111,6 +111,11 @@ hrv.data =
                      size = 120, shift = 30, type = "fourier",
                      ULFmin = 0, ULFmax = 0.03, VLFmin = 0.03, VLFmax = 0.05,
                      LFmin = 0.05, LFmax = 0.15, HFmin = 0.15, HFmax = 0.4 )
+# Plot it
+spectrogram <- PlotSpectrogram(HRVData = hrv.data,
+                               size = 120, shift = 30,
+                               scale = "logaritmic",
+                               freqRange = c(0.04, 0.4))
 
 
 # Indicate different episodes (conditions) in data. 
